@@ -1,5 +1,6 @@
 package com.github.heidiks;
 
+import com.github.heidiks.job.MyJob;
 import com.github.heidiks.job.SampleJob;
 import com.github.heidiks.spring.AutowiringSpringBeanJobFactory;
 import org.quartz.JobDetail;
@@ -35,7 +36,8 @@ public class SchedulerConfig {
 
     @Bean
     public SchedulerFactoryBean schedulerFactoryBean(DataSource dataSource, JobFactory jobFactory,
-                                                     @Qualifier("sampleJobTrigger") Trigger sampleJobTrigger) throws IOException {
+                                                     @Qualifier("sampleJobTrigger") Trigger sampleJobTrigger,
+                                                     @Qualifier("myJobTrigger") Trigger myJobTrigger) throws IOException {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
         // this allows to update triggers in DB when updating settings in config file:
         factory.setOverwriteExistingJobs(true);
@@ -43,7 +45,7 @@ public class SchedulerConfig {
         factory.setJobFactory(jobFactory);
 
         factory.setQuartzProperties(quartzProperties());
-        factory.setTriggers(sampleJobTrigger);
+        factory.setTriggers(sampleJobTrigger, myJobTrigger);
 
         return factory;
     }
@@ -61,6 +63,11 @@ public class SchedulerConfig {
         return createJobDetail(SampleJob.class);
     }
 
+    @Bean
+    public JobDetailFactoryBean myJobDetail() {
+        return createJobDetail(MyJob.class);
+    }
+
 
     private static JobDetailFactoryBean createJobDetail(Class jobClass) {
         JobDetailFactoryBean factoryBean = new JobDetailFactoryBean();
@@ -73,6 +80,12 @@ public class SchedulerConfig {
     @Bean(name = "sampleJobTrigger")
     public CronTriggerFactoryBean sampleJobTrigger(@Qualifier("sampleJobDetail") JobDetail jobDetail,
                                                    @Value("${samplejob.frequency}") String frequency) {
+        return createCronTrigger(jobDetail, frequency);
+    }
+
+    @Bean(name = "myJobTrigger")
+    public CronTriggerFactoryBean myJobTrigger(@Qualifier("myJobDetail") JobDetail jobDetail,
+                                                   @Value("${myjob.frequency}") String frequency) {
         return createCronTrigger(jobDetail, frequency);
     }
 

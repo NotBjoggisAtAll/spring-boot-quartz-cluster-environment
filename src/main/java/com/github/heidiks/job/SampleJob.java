@@ -19,12 +19,7 @@ public class SampleJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) {
         LOG.info("Starting job");
-        try {
-            service.hello();
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        service.createNewFile();
         LOG.info("Finishing job");
     }
 }
