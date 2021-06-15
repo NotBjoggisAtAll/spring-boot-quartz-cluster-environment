@@ -61,11 +61,6 @@ public class SchedulerConfig {
         return createJobDetail(SampleJob.class);
     }
 
-    @Bean(name = "sampleJobTrigger")
-    public CronTriggerFactoryBean sampleJobTrigger(@Qualifier("sampleJobDetail") JobDetail jobDetail,
-                                                   @Value("${samplejob.frequency}") String frequency) {
-        return createCronTrigger(jobDetail, frequency);
-    }
 
     private static JobDetailFactoryBean createJobDetail(Class jobClass) {
         JobDetailFactoryBean factoryBean = new JobDetailFactoryBean();
@@ -73,6 +68,12 @@ public class SchedulerConfig {
         // job has to be durable to be stored in DB:
         factoryBean.setDurability(true);
         return factoryBean;
+    }
+
+    @Bean(name = "sampleJobTrigger")
+    public CronTriggerFactoryBean sampleJobTrigger(@Qualifier("sampleJobDetail") JobDetail jobDetail,
+                                                   @Value("${samplejob.frequency}") String frequency) {
+        return createCronTrigger(jobDetail, frequency);
     }
 
     private static CronTriggerFactoryBean createCronTrigger(JobDetail jobDetail, String cronExpression) {

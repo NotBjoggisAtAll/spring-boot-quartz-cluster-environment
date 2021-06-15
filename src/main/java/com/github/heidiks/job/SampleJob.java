@@ -21,7 +21,7 @@ public class SampleJob implements Job {
         LOG.info("Starting job");
         try {
             service.hello();
-            Thread.sleep(10000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
