@@ -1,6 +1,6 @@
-package com.github.heidiks.job;
+package com.bjoggis.dev.job;
 
-import com.github.heidiks.service.SampleService;
+import com.bjoggis.dev.service.SampleService;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;

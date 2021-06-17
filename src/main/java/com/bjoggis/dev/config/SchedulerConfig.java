@@ -1,8 +1,8 @@
-package com.github.heidiks;
+package com.bjoggis.dev.config;
 
-import com.github.heidiks.job.MyJob;
-import com.github.heidiks.job.SampleJob;
-import com.github.heidiks.spring.AutowiringSpringBeanJobFactory;
+import com.bjoggis.dev.job.MyJob;
+import com.bjoggis.dev.job.SampleJob;
+import com.bjoggis.dev.spring.AutowiringSpringBeanJobFactory;
 import org.quartz.JobDetail;
 import org.quartz.SimpleTrigger;
 import org.quartz.Trigger;

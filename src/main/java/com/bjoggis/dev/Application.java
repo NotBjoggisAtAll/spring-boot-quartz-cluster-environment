@@ -1,5 +1,6 @@
-package com.github.heidiks;
+package com.bjoggis.dev;
 
+import com.bjoggis.dev.config.SchedulerConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;

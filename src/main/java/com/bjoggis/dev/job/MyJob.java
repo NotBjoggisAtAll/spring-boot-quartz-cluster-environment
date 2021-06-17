@@ -1,4 +1,4 @@
-package com.github.heidiks.job;
+package com.bjoggis.dev.job;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;

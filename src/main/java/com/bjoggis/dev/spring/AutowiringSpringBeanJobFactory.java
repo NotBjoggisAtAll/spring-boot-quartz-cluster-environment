@@ -1,4 +1,4 @@
-package com.github.heidiks.spring;
+package com.bjoggis.dev.spring;
 
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
