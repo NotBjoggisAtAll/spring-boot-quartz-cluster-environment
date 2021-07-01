@@ -10,16 +10,16 @@ import javax.sql.DataSource;
 @Configuration
 public class DatabaseConfig {
 
-    @Value("${myjob.url}")
+    @Value("jdbc:mysql://localhost:3306/quartznet")
     private String url;
 
-    @Value("${myjob.username}")
+    @Value("root")
     private String username;
 
-    @Value("${myjob.password}")
+    @Value("password")
     private String password;
 
-    @Value("${myjob.driver-class-name}")
+    @Value("com.mysql.jdbc.Driver")
     private String driver;
 
     @Bean

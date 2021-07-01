@@ -1,15 +1,14 @@
 package com.bjoggis.dev;
 
-import com.bjoggis.dev.config.SchedulerConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @SpringBootApplication
-@Import({SchedulerConfig.class})
 public class Application {
 
     public static void main(String[] args) {
+        ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
         SpringApplication.run(Application.class, args);
     }
 }
